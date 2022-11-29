@@ -1,13 +1,20 @@
-﻿using System;
-
-public class BMI
+﻿using BMICalculator;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+class BMI
 {
+    public static List<Top> toplist;
     public static int weight;
     public static int height;
     public static int bmi;
     public static string name;
     public static void Main()
     {
+        toplist = new List<Top>();
         Welcome();
        
     }
@@ -34,7 +41,6 @@ public class BMI
         if (usercommand == "1")
         {
             calc();
-
         }
         else if (usercommand == "2")
         {
@@ -68,8 +74,13 @@ public class BMI
     {
         Console.Clear();
         Console.WriteLine("===== Last 10 Results =====");
-
-
+        if (toplist.Count > 0)
+        {
+            foreach (Top item in toplist)
+            {
+                Console.WriteLine($"Name: {item.Name} - Product Price: {item.BMI}.");
+            }
+        }
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine();
         Console.WriteLine();
@@ -81,18 +92,20 @@ public class BMI
     {
         try
         {
+            var toplist = new Top();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Blue;
-            //Console.WriteLine("Please enter your name: ");
-            //string name = Console.ReadLine();
+            Console.WriteLine("Please enter your name: ");
+            string name = Console.ReadLine();
+            //Top.Name = name;
             Console.WriteLine("Please Enter your height in inches: ");
             int height = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Enter your weight in pounds: ");
             int weight = Convert.ToInt32(Console.ReadLine());
 
-            bmi = (weight * 703) / (height * height);
-
+            bmi = weight * 703 / (height * height);
+            //toplist.Add(score);
             if (bmi < 18)
             {
                 Console.Clear();
