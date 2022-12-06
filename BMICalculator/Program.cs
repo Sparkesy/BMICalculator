@@ -78,7 +78,7 @@ class BMI
         {
             foreach (Top item in toplist)
             {
-                Console.WriteLine($"Name: {item.Name} - Product Price: {item.BMI}.");
+                Console.WriteLine($"Name: {item.Name} - BMI: {item.BMI}.");
             }
         }
         Console.ForegroundColor = ConsoleColor.Green;
